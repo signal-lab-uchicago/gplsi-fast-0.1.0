@@ -1,0 +1,26 @@
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gplsi-fast"
+version = "0.1.0"
+description = "Graph-aligned pLSI with performance fixes (faster preconditioning, subspace convergence, vectorized graph ops)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name="Your Name"}]
+dependencies = [
+  "numpy>=1.23",
+  "scipy>=1.9",
+  "networkx>=2.7",
+  "pycvxcluster>=0.1.0"
+]
+
+[project.optional-dependencies]
+cvx = ["cvxpy>=1.3"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["gplsi_fast*", "GpLSI*"]

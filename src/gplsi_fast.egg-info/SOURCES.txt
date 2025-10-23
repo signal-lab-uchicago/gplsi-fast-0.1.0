@@ -1,0 +1,16 @@
+LICENSE
+README.md
+pyproject.toml
+src/GpLSI/__init__.py
+src/GpLSI/gplsi.py
+src/GpLSI/graphSVD.py
+src/GpLSI/utils.py
+src/gplsi_fast/__init__.py
+src/gplsi_fast/gplsi.py
+src/gplsi_fast/graphsvd.py
+src/gplsi_fast/utils.py
+src/gplsi_fast.egg-info/PKG-INFO
+src/gplsi_fast.egg-info/SOURCES.txt
+src/gplsi_fast.egg-info/dependency_links.txt
+src/gplsi_fast.egg-info/requires.txt
+src/gplsi_fast.egg-info/top_level.txt

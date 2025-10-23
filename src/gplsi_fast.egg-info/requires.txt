@@ -1,0 +1,7 @@
+numpy>=1.23
+scipy>=1.9
+networkx>=2.7
+pycvxcluster>=0.1.0
+
+[cvx]
+cvxpy>=1.3
