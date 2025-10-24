@@ -63,13 +63,22 @@ def graphSVD(
         V_old = V
 
         # Update U (with CV across folds), then V,L
+        #P_U_old = np.dot(U, U.T) 
+        #P_V_old = np.dot(V, V.T) 
+        #X_hat_old = (P_U_old @ X) @ P_V_old
+
         U, lambd, lambd_errs = update_U_tilde(X, V, L, G, weights, folds, lambd_grid)
         V, L = update_V_L_tilde(X, U)
 
-        # Subspace convergence (cheap): no multiplies by X
+        # # Subspace convergence (cheap): no multiplies by X
         gapU = _subspace_gap(U_old, U)
         gapV = _subspace_gap(V_old, V)
         score = (gapU + gapV) / (2 * np.sqrt(K))
+        # 
+        #P_U = np.dot(U, U.T)
+        #P_V = np.dot(V, V.T)
+        #X_hat = (P_U @ X) @ P_V 
+        #score = norm(X_hat-X_hat_old)/n
         niter += 1
         if verbose == 1:
             print(f"Convergence score = {score:.6g}")
@@ -92,7 +101,7 @@ def lambda_search(j, folds, X, V, L, G, weights, lambd_grid):
     lambd_best = 0.0
 
     # Cheaper inner settings
-    ssnal = pycvxcluster.pycvxcluster.SSNAL(verbose=0, admm_iter=20, maxiter=200, stoptol=1e-5)
+    ssnal = pycvxcluster.pycvxcluster.SSNAL(verbose=0, admm_iter=0, maxiter=200, stoptol=1e-5)
 
     rises = 0
     last_err = float("inf")
@@ -104,7 +113,7 @@ def lambda_search(j, folds, X, V, L, G, weights, lambd_grid):
             weight_matrix=weights,
             save_centers=True,
             save_labels=False,
-            recalculate_weights=(fitn == 0),
+            recalculate_weights= (fitn == 0),
         )
         # warm-start
         ssnal.kwargs["x0"] = ssnal.centers_

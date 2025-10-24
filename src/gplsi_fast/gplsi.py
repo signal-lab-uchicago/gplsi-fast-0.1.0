@@ -13,7 +13,7 @@ except Exception:  # pragma: no cover
 
 class GpLSI_(object):
     """
-    Faster GpLSI with improved preconditioning and plumbing.
+    GpLSI with improved preconditioning and plumbing.
 
     Parameters
     ----------
@@ -30,7 +30,6 @@ class GpLSI_(object):
         - "whiten" (default) uses closed-form Q = (M M^T)^(-1/2)
         - "none" disables preconditioning
         - "cvx" uses the original log-det cone program (requires cvxpy)
-        For backwards compatibility, True -> "whiten", False -> "none".
     initialize : bool
     """
     def __init__(
@@ -44,7 +43,7 @@ class GpLSI_(object):
         method="two-step",
         return_anchor_docs=True,
         verbose=0,
-        precondition="whiten",
+        precondition="none",
         initialize=True,
     ):
         self.lambd = lambd

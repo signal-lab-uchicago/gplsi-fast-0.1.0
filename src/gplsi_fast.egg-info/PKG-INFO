@@ -52,3 +52,4 @@ continues to work; the shim package `GpLSI` re-exports from `gplsi_fast`.
 ## Notes
 - The `precondition` option now accepts: `"none"`, `"whiten"` (default), or `"cvx"`.
 - During lambda grid search we use lighter SSNAL settings and early stopping; the final fit is tighter.
+# gplsi-fast-0.1.0
